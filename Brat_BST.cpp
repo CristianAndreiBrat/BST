@@ -170,6 +170,22 @@ struct BST {
         root = deleteNode(root, value);
     }
 };
+int altezza(Node* radice) {
+    if (radice == nullptr)
+        return 0;
+
+    int sinistra = altezza(radice->left);
+    int destra = altezza(radice->right);
+
+    int h;
+    if (sinistra > destra)
+        h = sinistra + 1;
+    else
+        h = destra + 1;
+
+    return h;
+}
+
 
 int main() {
 
