@@ -185,17 +185,23 @@ int altezza(Node* radice) {
     return h;
 }
 int countNodes(Node* n){
-    if(root==nullptr)return 0;
+    if(n==nullptr)return 0;
     return 1+countNodes(n->left)+countNodes(n->right);
     
 }
 int countLeaves(Node* n){
-    if(root==nullptr)return 0;
+    if(n==nullptr)return 0;
     if(node->left!=nullptr&&node->right!=nullptr)
-    {return 0+countLeaves(node->left)+countLeaves(node->right);
+    {return 0+countLeaves(n->left)+countLeaves(n->right);
     }else{
-        return 0+countLeaves(node->left)+countLeaves(node->right);
+        return 0+countLeaves(n->left)+countLeaves(n->right);
          }
+}
+int countInRange(Node* n, int min , int max){
+    if(n==nullptr)return 0;
+    if(n->value<min) return countInRange(n->right,min,max);
+    if(n->value>max) return countInRange(n->left,min,max);
+    return 1+countInRange(n->left,min,max)+countInRange(n->right,min,max);
 }
 
 
